@@ -9,13 +9,13 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FPFCToggle</RootNamespace>
     <AssemblyName>FPFCToggle</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
+    <DebugType>portable</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
@@ -24,7 +24,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>portable</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -33,21 +33,25 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>.\References\Managed\Assembly-CSharp.dll</HintPath>
+    <Reference Include="HMLib">
+      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\HMLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="BeatSaberCustomUI">
-      <HintPath>.\References\Plugins\BeatSaberCustomUI.dll</HintPath>
+    <Reference Include="HMUI, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <Private>False</Private>
+      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\HMUI.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="IllusionInjector">
-      <HintPath>.\References\Managed\IllusionInjector.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="IPA.Injector">
+      <HintPath>References\Managed\IPA.Injector.dll</HintPath>
     </Reference>
-    <Reference Include="IllusionPlugin">
-      <HintPath>.\References\Managed\IllusionPlugin.dll</HintPath>
+    <Reference Include="IPA.Loader">
+      <HintPath>References\Managed\IPA.Loader.dll</HintPath>
+    </Reference>
+    <Reference Include="Main, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <Private>False</Private>
+      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\Main.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -55,10 +59,6 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TextMeshPro-1.0.55.2017.1.0b12">
-      <HintPath>.\References\Managed\TextMeshPro-1.0.55.2017.1.0b12.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>.\References\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
@@ -66,6 +66,10 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>.\References\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>H:\SteamApps\SteamApps\common\Beat Saber\Beat Saber_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>.\References\Managed\UnityEngine.UI.dll</HintPath>
@@ -79,23 +83,31 @@
       <HintPath>.\References\Managed\UnityEngine.UIModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEngine.VRModule">
-      <HintPath>.\References\Managed\UnityEngine.VRModule.dll</HintPath>
+    <Reference Include="UnityEngine.XRModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <Private>False</Private>
+      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\UnityEngine.XRModule.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="VRUI, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\VRUI.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FPFCController.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\BasicUI.cs" />
-    <Compile Include="Util\Logger.cs" />
-    <Compile Include="Util\ReflectionUtil.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="BuildTargets.targets" />
     <None Include="CreateJunctions.bat" />
+    <EmbeddedResource Include="manifest.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="BuildTargets.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(TargetFileName)" "$(ProjectDir)\References\Plugins"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

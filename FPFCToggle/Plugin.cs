@@ -1,87 +1,58 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Media;
-using TMPro;
-using UnityEngine;
+using IPA;
+using IPA.Config;
+using IPA.Config.Stores;
 using UnityEngine.SceneManagement;
-using IllusionPlugin;
-using FPFCToggle.Util;
-
+using UnityEngine;
+using IPALogger = IPA.Logging.Logger;
 
 namespace FPFCToggle
 {
-    public class Plugin : IPlugin
+
+    [Plugin(RuntimeOptions.SingleStartInit)]
+    public class Plugin
     {
-        public static string PluginName = "FPFCToggle";
-        public string Name => PluginName;
-        public string Version => "0.0.1";
+        internal static Plugin instance { get; private set; }
+        internal static string Name => "FPFCToggle";
+        internal static IPALogger log;
 
-        bool doesPluginExist;
+        [Init]
+        /// <summary>
+        /// Called when the plugin is first loaded by IPA (either when the game starts or when the plugin is enabled if it starts disabled).
+        /// [Init] methods that use a Constructor or called before regular methods like InitWithConfig.
+        /// Only use [Init] with one Constructor.
+        /// </summary>
+        public void Init(IPALogger logger)
+        {
+            instance = this;
+            log = logger;
+            log.Debug("Logger initialized.");
+        }
 
+        #region BSIPA Config
+        //Uncomment to use BSIPA's config
+        /*
+        [Init]
+        public void InitWithConfig(Config conf)
+        {
+            Configuration.PluginConfig.Instance = conf.Generated<Configuration.PluginConfig>();
+            Logger.log.Debug("Config loaded");
+        }
+        */
+        #endregion
+
+        [OnStart]
         public void OnApplicationStart()
         {
-            SceneManager.activeSceneChanged += SceneManagerOnActiveSceneChanged;
-            SceneManager.sceneLoaded += SceneManager_sceneLoaded;
-
-            //Checks if a IPlugin with the name in quotes exists, in case you want to verify a plugin exists before trying to reference it, or change how you do things based on if a plugin is present
-            doesPluginExist = IllusionInjector.PluginManager.Plugins.Any(x => x.Name == "Saber Mod");
-
-
+            if(FPFCController.instance == null)
+                new GameObject("FPFCToggle_Controller").AddComponent<FPFCController>();
         }
 
-        private void SceneManagerOnActiveSceneChanged(Scene oldScene, Scene newScene)
-        {
-
-            if (newScene.name == "Menu")
-            {
-                //Code to execute when entering The Menu
-
-
-            }
-
-            if (newScene.name == "GameCore")
-            {
-                //Code to execute when entering actual gameplay
-
-
-            }
-
-
-        }
-
-        private void SceneManager_sceneLoaded(Scene scene, LoadSceneMode arg1)
-        {
-            //Create GameplayOptions/SettingsUI if using either
-            if (scene.name == "Menu")
-                UI.BasicUI.CreateUI();
-
-        }
-
+        [OnExit]
         public void OnApplicationQuit()
-        {
-            SceneManager.activeSceneChanged -= SceneManagerOnActiveSceneChanged;
-            SceneManager.sceneLoaded -= SceneManager_sceneLoaded;
-        }
-
-        public void OnLevelWasLoaded(int level)
-        {
-
-        }
-
-        public void OnLevelWasInitialized(int level)
-        {
-        }
-
-        public void OnUpdate()
-        {
-
-
-        }
-
-        public void OnFixedUpdate()
         {
         }
     }

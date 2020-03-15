@@ -1,0 +1,13 @@
+{
+  "$schema": "https://github.com/nike4613/BSIPA-MetadataFileSchema/blob/master/Schema.json",
+  "name": "FPFCToggle",
+  "id": "FPFCToggle",
+  "description": "Press F to enable first person flying camera.",
+  "version": "0.3.0",
+  "gameVersion": "1.8.0",
+  "author": "Zingabopp",
+  "dependsOn": {
+  },
+  "features": [
+  ]
+}
