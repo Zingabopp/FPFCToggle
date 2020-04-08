@@ -79,7 +79,7 @@ namespace FPFCToggle
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                Plugin.log.Debug("F detected.");
+                //Plugin.log.Debug("F detected.");
                 if (!keyHeld)
                 {
                     var flyingController = GetFlyingController();
@@ -88,7 +88,7 @@ namespace FPFCToggle
                         if (flyingController.enabled)
                         {
                             flyingController.enabled = false;
-                            Plugin.log.Debug("Flying controller disabled.");
+                            //Plugin.log.Debug("Flying controller disabled.");
                             if (VRCenter != null)
                             {
                                 //Logger.log.Info($"Current Position:\n{TransformValuesString(VRCenter.gameObject.transform.position, VRCenter.gameObject.transform.rotation.eulerAngles)}");
@@ -111,7 +111,7 @@ namespace FPFCToggle
                                 //Logger.log.Info($"Saving position:\n{TransformValuesString(LastPos, LastRot)}");
                             }
                             flyingController.enabled = true;
-                            Plugin.log.Debug("Flying controller enabled.");
+                            //Plugin.log.Debug("Flying controller enabled.");
                         }
                     }
                     else
