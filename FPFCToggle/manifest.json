@@ -4,10 +4,9 @@
   "id": "FPFCToggle",
   "description": "Press F to enable first person flying camera.",
   "version": "0.3.0",
-  "gameVersion": "1.8.0",
+  "gameVersion": "1.11.1",
   "author": "Zingabopp",
   "dependsOn": {
-  },
-  "features": [
-  ]
+    "BSIPA" : "^4.0.5"
+  }
 }
