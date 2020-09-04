@@ -13,6 +13,7 @@ namespace FPFCToggle
     /// </summary>
 	public class FPFCController : MonoBehaviour
     {
+        internal static KeyCode ToggleKey;
         public static FPFCController instance;
         private bool keyHeld = false;
         private VRCenterAdjust _vrCenter;
@@ -77,7 +78,7 @@ namespace FPFCToggle
         /// </summary>
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(ToggleKey))
             {
                 //Plugin.log.Debug("F detected.");
                 if (!keyHeld)

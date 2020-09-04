@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="FPFCController.cs" />
     <Compile Include="Plugin.cs" />
+    <Compile Include="PluginConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

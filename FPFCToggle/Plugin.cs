@@ -17,6 +17,7 @@ namespace FPFCToggle
     {
         internal static Plugin instance { get; private set; }
         internal static string Name => "FPFCToggle";
+        internal static PluginConfig config;
         internal static IPALogger log;
 
         [Init]
@@ -33,15 +34,12 @@ namespace FPFCToggle
         }
 
         #region BSIPA Config
-        //Uncomment to use BSIPA's config
-        /*
         [Init]
         public void InitWithConfig(Config conf)
         {
-            Configuration.PluginConfig.Instance = conf.Generated<Configuration.PluginConfig>();
-            Logger.log.Debug("Config loaded");
+            config = conf.Generated<PluginConfig>();
+            log.Debug("Config loaded");
         }
-        */
         #endregion
 
         [OnStart]
