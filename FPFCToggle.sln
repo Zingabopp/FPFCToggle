@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.489
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FPFCToggle", "FPFCToggle\FPFCToggle.csproj", "{CA2F6ED4-1D33-48BA-B706-D8010FBF16E5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A0730775-2E82-4C15-B0E5-884C9607B887}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Refs\refs.txt = Refs\refs.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

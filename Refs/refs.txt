@@ -1,0 +1,15 @@
+::from ./bsinstalldir.txt
+"Beat Saber_Data/Managed/
+""HMLib.dll?virt?alias=Beat Saber_Data\Managed\HMLib.dll
+""Main.dll?virt?alias=Beat Saber_Data\Managed\Main.dll
+""UnityEngine.
+"""dll?alias=Beat Saber_Data\Managed\UnityEngine.dll
+"""CoreModule.dll?alias=Beat Saber_Data\Managed\UnityEngine.CoreModule.dll
+"""UI.dll?alias=Beat Saber_Data\Managed\UnityEngine.InputLegacyModule.dll
+
+::startopt
+"::resolveInHere Libs/
+""SemVer.dll?alias=Libs\SemVer.dll
+""Newtonsoft.Json.dll?alias=Libs\Newtonsoft.Json.dll
+"::resolveInHere Beat Saber_Data/Managed/
+""IPA.Loader.dll?alias=Beat Saber_Data\Managed\IPA.Loader.dll
